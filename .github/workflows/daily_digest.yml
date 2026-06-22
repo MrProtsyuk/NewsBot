@@ -1,0 +1,37 @@
+name: Run Daily News Digest
+
+on:
+  schedule:
+    # This cron expression runs the script every day at 23:00 UTC (7:00 AM MYT / Malaysia Time)
+    - cron: "0 23 * * *"
+  # This allows you to manually trigger the workflow from the GitHub UI for testing
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository code so the runner can see your script
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up a Python environment on the GitHub runner
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Step 3: Install the required dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Step 4: Run the script, injecting the repository secrets as environment variables
+      - name: Run News Bot
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+        run: python main.py # Make sure this matches the filename of your script
