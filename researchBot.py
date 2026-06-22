@@ -9,7 +9,7 @@ from google.genai import types
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
 SENDER_PASSWORD = os.environ.get("SENDER_PASSWORD")
-RECEIVER_EMAIL = SENDER_EMAIL 
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL") 
 
 # arXiv categories: quant-ph (Quantum Physics), cs.CR (Cryptography), cs.DS (Data Structures)
 ARXIV_CATEGORIES = ["cat:quant-ph", "cat:cs.CR", "cat:cs.DS", '(cat:quant-ph+OR+cat:cs.DS)+AND+all:%22hybrid+quantum-classical%22']
