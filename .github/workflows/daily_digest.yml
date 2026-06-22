@@ -2,8 +2,8 @@ name: Run Daily News Digest
 
 on:
   schedule:
-    # This cron expression runs the script every day at 23:00 UTC (7:00 AM MYT / Malaysia Time)
-    - cron: "0 23 * * *"
+    # This cron expression runs the script every day at 23:00 UTC (7:00 AM California Time)
+    - cron: "0 14 * * *"
   # This allows you to manually trigger the workflow from the GitHub UI for testing
   workflow_dispatch:
 

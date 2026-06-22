@@ -2,8 +2,8 @@ name: Run Daily Paper Radar
 
 on:
   schedule:
-    # Runs everyday at 00:00 UTC (8:00 AM Malaysia Time)
-    - cron: "0 0 * * *"
+    # Runs everyday at 00:00 UTC (7:05 AM California Time)
+    - cron: "05 14 * * *"
   workflow_dispatch:
 
 jobs:
